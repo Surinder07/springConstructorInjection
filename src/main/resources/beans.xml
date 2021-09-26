@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="auto" name="AutoInsurance" class="com.example.springlearning.domain.AutoInsurance">
+    <constructor-arg name="type" value="Auto" ></constructor-arg>
+        <constructor-arg name="price" value="400.0" ></constructor-arg>
+    </bean>
+
+    <bean id="auto2" name="HomeInsurance" class="com.example.springlearning.domain.HomeInsurance">
+        <constructor-arg name="type" value="Home" ></constructor-arg>
+        <constructor-arg name="price" value="100.0" ></constructor-arg>
+    </bean>
+
+    <bean id="flood" name="FloodInsurance" class="com.example.springlearning.domain.FloodInsurance">
+        <constructor-arg name="type" value="Flood" ></constructor-arg>
+        <constructor-arg name="price" value="80.0" ></constructor-arg>
+    </bean>
+
+    <bean name="QuoteGenerator" class="com.example.springlearning.bussiness.QuoteGenerator">
+    <constructor-arg name="insurances">
+    <list value-type="com.example.springlearning.domain.IInsurance">
+        <ref bean="AutoInsurance"></ref>
+        <ref bean="HomeInsurance"></ref>
+        <ref bean="FloodInsurance"></ref>
+    </list>
+    </constructor-arg>
+    </bean>
+</beans>
